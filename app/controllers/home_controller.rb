@@ -1,16 +1,13 @@
 class HomeController < ApplicationController
-  def homepage
-  	SendTweet.new.perform
-  end
+	def index
+	end
 
+	def new
+	end
 
-  def send_tweet
-    SendTweet.new.perform
-    render 'homepage'
-  end
+	def create
+		@tweet=SendTweet.new(params[:tweet]).perform
+		render 'index'
+	end
 
-  private
-  def params_tweet
-    params.require(:params_tweet).permit(:tweet)
-  end
 end
